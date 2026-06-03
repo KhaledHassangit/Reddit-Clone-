@@ -4,6 +4,8 @@ import { getSessionUser } from "@/lib/auth";
 import { tagPostCounts } from "@/lib/db/queries";
 import Container from "@/util/Container";
 
+export const dynamic = 'force-dynamic'
+
 export default async function CoreLayout({
     children,
 }: {

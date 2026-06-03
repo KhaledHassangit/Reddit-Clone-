@@ -30,7 +30,7 @@ export function ShareButton({
         return;
       }
 
-      await navigator.clipboard.writeText(shareUrl);
+      await (navigator as any).clipboard.writeText(shareUrl);
       setStatus("copied");
       window.setTimeout(() => setStatus("idle"), 2000);
     } catch (error) {

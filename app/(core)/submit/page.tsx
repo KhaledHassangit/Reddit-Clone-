@@ -30,3 +30,5 @@ export default async function SubmitPage() {
         </div>
     );
 }
+
+export const dynamic = 'force-dynamic'

@@ -130,3 +130,5 @@ export default async function PostPage({
     </div>
   );
 }
+
+export const dynamic = 'force-dynamic'

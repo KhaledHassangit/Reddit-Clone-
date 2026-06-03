@@ -65,7 +65,6 @@ export default async function Home({
       </div>
       <aside className="hidden w-72 shrink-0 space-y-6 lg:block">
         <RightTrending items={trending} />
-        {/* <RightTopTags /> */}
       </aside>
     </div>
   );

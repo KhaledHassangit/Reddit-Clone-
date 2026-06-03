@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Input } from "../ui/input";
 import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "../ui/button";
+import { ThemeToggle } from "../ui/ThemeToggle";
 import { Bell, Search } from "lucide-react";
 import { SignedIn, SignedOut, UserButton } from "@neondatabase/auth/react";
 import Container from "@/util/Container";
@@ -35,30 +36,31 @@ const Navbar = () => {
                     />
                 </div>
 
-                <SignedIn>
-                    <Link
-                        href="/submit"
-                        className={cn(
-                            buttonVariants({ variant: "outline", size: "sm" }),
-                            "hidden sm:inline-flex",
-                        )}
-                    >
-                        Create
-                    </Link>
+                <div className="ml-auto flex items-center gap-2">
+                    <ThemeToggle />
+                    <SignedIn>
+                        <Link
+                            href="/submit"
+                            className={cn(
+                                buttonVariants({ variant: "outline", size: "sm" }),
+                                "hidden sm:inline-flex",
+                            )}
+                        >
+                            Create
+                        </Link>
 
-                    <Button
-                        variant="ghost"
-                        size="icon"
-                        className="text-muted-foreground"
-                        aria-label="Notifications"
-                    >
-                        <Bell className="size-5" />
-                    </Button>
-                    <UserButton />
-                </SignedIn>
+                        <Button
+                            variant="ghost"
+                            size="icon"
+                            className="text-muted-foreground"
+                            aria-label="Notifications"
+                        >
+                            <Bell className="size-5" />
+                        </Button>
+                        <UserButton />
+                    </SignedIn>
 
-                <SignedOut>
-                    <div className="ml-auto flex items-center gap-2">
+                    <SignedOut>
                         <Link
                             href={"/auth/sign-in"}
                             className={cn(
@@ -73,8 +75,8 @@ const Navbar = () => {
                         >
                             Sign Up
                         </Link>
-                    </div>
-                </SignedOut>
+                    </SignedOut>
+                </div>
             </Container>
         </header>
     )

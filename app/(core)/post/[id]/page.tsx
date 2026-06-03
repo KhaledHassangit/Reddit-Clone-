@@ -2,6 +2,7 @@ import { VoteButtons } from "@/components/feed/VoteButtons";
 import { CommentComposer } from "@/components/post/CommentComposer";
 import { CommentThread } from "@/components/post/CommentThread";
 import { Separator } from "@/components/ui/separator";
+import { ShareButton } from "@/components/ui/ShareButton";
 import { getSessionUser } from "@/lib/auth";
 import {
   getAuthorById,
@@ -14,7 +15,7 @@ import {
 import { formatRelativeTime } from "@/lib/format";
 import { cn } from "@/lib/utils";
 import { UserAvatar } from "@neondatabase/auth/react";
-import { ArrowLeft, MessageSquare, Share2 } from "lucide-react";
+import { ArrowLeft, MessageSquare } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -93,13 +94,7 @@ export default async function PostPage({
                 {post.commentCount} Comments
               </span>
             </div>
-            <button
-              type="button"
-              className="inline-flex items-center gap-1 hover:text-foreground"
-            >
-              <Share2 className="size-4" />
-              Share
-            </button>
+            <ShareButton path={`/post/${post.id}`} title={post.title} />
           </div>
         </article>
 

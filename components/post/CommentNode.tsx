@@ -3,6 +3,7 @@
 import { EnrichedCommentNode } from "@/lib/comment-tree";
 import { User } from "@/lib/types";
 import { Badge } from "../ui/badge";
+import { ShareButton } from "../ui/ShareButton";
 import { formatRelativeTime } from "@/lib/format";
 import { useState } from "react";
 import { CommentComposer } from "./CommentComposer";
@@ -20,7 +21,7 @@ export function CommentNode({
   const isOp = node.authorId === postAuthorId;
   const [showReply, setShowReply] = useState(false);
   return (
-    <li className="relative">
+    <li id={`comment-${node.id}`} className="relative">
       <div className="flex gap-2">
         <VoteButtons
           target="comment"
@@ -57,9 +58,11 @@ export function CommentNode({
                 Reply
               </button>
             ) : null}
-            <button type="button" className="hover:text-foreground">
-              Share
-            </button>
+            <ShareButton
+              path={`/post/${node.postId}#comment-${node.id}`}
+              title={`Comment by u/${node.author.username}`}
+              className="text-sm"
+            />
           </div>
 
           {sessionUser && showReply && (

@@ -2,9 +2,10 @@ import { formatRelativeTime } from "@/lib/format";
 import { Post, Tag, User } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { UserAvatar } from "@neondatabase/auth/react";
-import { MessageSquare, Share2 } from "lucide-react";
+import { MessageSquare } from "lucide-react";
 import Link from "next/link";
 import { VoteButtons } from "./VoteButtons";
+import { ShareButton } from "../ui/ShareButton";
 
 function snippet(body: string, max = 160) {
   const t = body.replace(/\s+/g, " ").trim();
@@ -74,13 +75,7 @@ export function PostCard({
             <MessageSquare className="size-4" />
             {post.commentCount} Comments
           </span>
-          <button
-            type="button"
-            className="inline-flex items-center gap-1 hover:text-foreground"
-          >
-            <Share2 className="size-4" />
-            Share
-          </button>
+          <ShareButton path={`/post/${post.id}`} title={post.title} />
         </div>
       </div>
     </article>
